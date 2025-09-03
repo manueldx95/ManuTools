@@ -1,0 +1,229 @@
+# ===== BLENDER FILES =====
+# File di backup automatici di Blender
+*.blend1
+*.blend2
+*.blend~
+*.blend.tmp
+
+# File temporanei Blender
+*.tmp
+*.autosave
+*.crash.txt
+*.recover
+
+# Thumbnail e preview Blender
+*.blend.png
+blender_thumbnails/
+
+# Cache Blender
+*.cache
+blender_cache/
+
+# ===== PYTHON =====
+# Cache e bytecode Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[co]
+
+# Virtual environment
+venv/
+env/
+.env
+.venv/
+
+# ===== GOOGLE DRIVE SYNC =====
+# File di sincronizzazione Google Drive
+.~lock.*
+~$*
+*.tmp
+.goutputstream-*
+
+# File temporanei Google Drive
+*_gdrive_temp*
+*_sync_temp*
+*.gdoc
+*.gsheet
+
+# Cartelle di conflitto Google Drive
+*conflicted copy*
+*Conflicted Copy*
+*in conflitto*
+
+# Metadati Google Drive
+.gdrive/
+desktop.ini
+
+# ===== CARTELLE TEMPORANEE =====
+# Cartelle temp generiche
+temp/
+tmp/
+temporary/
+temp_*/
+*_temp/
+*_tmp/
+
+# Cartelle backup locali
+backup/
+backups/
+old_versions/
+archive/
+
+# Cartelle di lavoro temporaneo
+work_in_progress/
+wip/
+sandbox/
+test_area/
+
+# Export temporanei
+temp_exports/
+temp_renders/
+export_temp/
+
+# ===== SVILUPPO ADDON =====
+# Test e debugging
+test_*.py
+*_test.py
+debug_*.py
+test_scenes/
+test_models/
+test_materials/
+
+# Screenshots e capture per sviluppo
+screenshots/
+captures/
+debug_images/
+dev_screenshots/
+
+# File di log e debug
+*.log
+debug.txt
+error.log
+addon_log.txt
+
+# ===== SISTEMA OPERATIVO =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.lnk
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.directory
+.gvfs
+
+# ===== EDITOR E IDE =====
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# ===== ADDON SPECIFICO =====
+# Configurazioni locali dell'addon
+addon_config_local.py
+local_settings.json
+user_preferences.json
+
+# Asset pesanti che stai testando
+heavy_assets/
+large_textures/
+high_poly_models/
+
+# File di prova e sperimentazione
+experiments/
+prototypes/
+proof_of_concept/
+
+# Documentazione temporanea
+docs/drafts/
+*.draft.md
+notes_personal.txt
+
+# ===== BUILD E DISTRIBUZIONE =====
+# File di build
+build/
+dist/
+*.egg-info/
+
+# Zip di release (li crei manualmente)
+releases/
+*.zip
+*.tar.gz
+
+# ===== PERFORMANCE =====
+# File grandi generici
+*.mov
+*.avi
+*.mp4
+*.mkv
+
+# Asset non necessari nel codice
+*.exr
+*.hdr
+*.tiff
+*.psd
+
+# ===== GIT SPECIFICO =====
+# File di merge temporanei
+*.orig
+*.rej
+*.bak
+
+# Patch files
+*.patch
+*.diff
+
+# ===== SICUREZZA =====
+# File con informazioni sensibili
+secrets.py
+api_keys.txt
+passwords.txt
+.env.local
+
+# ===== BLENDER ADDON DEVELOPMENT =====
+# Script di test locali
+local_test.py
+quick_test.py
+
+# File di configurazione sviluppo
+dev_config.py
+debug_settings.py
+
+# Mesh e oggetti di test
+test_meshes/
+sample_objects/
+
+# ===== COLLABORATION =====
+# Note personali
+TODO_personal.md
+notes_private.txt
+my_ideas.txt
+
+# File specifici del PC
+*_home_pc*
+*_office_pc*
+*_laptop*

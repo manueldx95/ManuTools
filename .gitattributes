@@ -1,2 +1,139 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# ===== DEFAULT BEHAVIOR =====
+# Tutti i file di testo: auto-detect con LF endings
+* text=auto eol=lf
+
+# ===== PYTHON FILES =====
+# File Python: testo, UTF-8, LF endings, diff Python
+*.py text eol=lf encoding=utf-8 diff=python
+*.pyx text eol=lf encoding=utf-8 diff=python
+*.pyi text eol=lf encoding=utf-8 diff=python
+
+# ===== BLENDER SPECIFIC =====
+# File Blender: binari, non modificare
+*.blend binary
+*.blend1 binary
+*.blend2 binary
+
+# ===== CONFIGURATION FILES =====
+# File di configurazione: testo, UTF-8
+*.json text eol=lf encoding=utf-8 diff=json
+*.yml text eol=lf encoding=utf-8
+*.yaml text eol=lf encoding=utf-8
+*.toml text eol=lf encoding=utf-8
+*.ini text eol=lf encoding=utf-8
+*.cfg text eol=lf encoding=utf-8
+
+# ===== DOCUMENTATION =====
+# Documentazione: testo, UTF-8
+*.md text eol=lf encoding=utf-8 diff=markdown
+*.rst text eol=lf encoding=utf-8
+*.txt text eol=lf encoding=utf-8
+
+# ===== WEB FILES (se l'addon ha UI web) =====
+*.html text eol=lf encoding=utf-8 diff=html
+*.css text eol=lf encoding=utf-8 diff=css
+*.js text eol=lf encoding=utf-8 diff=javascript
+*.xml text eol=lf encoding=utf-8
+
+# ===== 3D MODEL FORMATS =====
+# Modelli 3D di testo
+*.obj text eol=lf encoding=utf-8
+*.mtl text eol=lf encoding=utf-8
+*.dae text eol=lf encoding=utf-8
+*.gltf text eol=lf encoding=utf-8
+*.x3d text eol=lf encoding=utf-8
+
+# Modelli 3D binari
+*.fbx binary
+*.3ds binary
+*.max binary
+*.mb binary
+*.ma text eol=lf encoding=utf-8
+*.glb binary
+*.usd binary
+*.usda text eol=lf encoding=utf-8
+
+# ===== IMAGE FILES =====
+# Immagini: tutte binarie
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.tga binary
+*.tiff binary
+*.tif binary
+*.ico binary
+*.webp binary
+
+# Formati HDR/EXR (usati spesso in Blender)
+*.hdr binary
+*.exr binary
+*.dpx binary
+
+# Vettoriali: testo
+*.svg text eol=lf encoding=utf-8
+
+# ===== AUDIO/VIDEO =====
+# File multimediali: binari
+*.mp3 binary
+*.wav binary
+*.ogg binary
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.mkv binary
+
+# ===== SCRIPTS E BATCH =====
+# Script di sistema
+*.sh text eol=lf
+*.bash text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf encoding=utf-8
+
+# ===== ARCHIVES =====
+# File compressi: binari
+*.zip binary
+*.rar binary
+*.7z binary
+*.tar binary
+*.gz binary
+
+# ===== GOOGLE DRIVE SPECIFICO =====
+# File Google Workspace (se presenti)
+*.gdoc text eol=lf encoding=utf-8
+*.gsheet text eol=lf encoding=utf-8
+*.gslides text eol=lf encoding=utf-8
+
+# ===== ADDON DEVELOPMENT =====
+# File di build e release
+setup.py text eol=lf encoding=utf-8 diff=python
+requirements.txt text eol=lf encoding=utf-8
+MANIFEST.in text eol=lf encoding=utf-8
+
+# License e readme
+LICENSE text eol=lf encoding=utf-8
+README* text eol=lf encoding=utf-8
+CHANGELOG* text eol=lf encoding=utf-8
+
+# ===== CUSTOM DIFF PATTERNS =====
+# Per file specifici dell'addon
+*_operators.py diff=python
+*_panels.py diff=python
+*_properties.py diff=python
+
+# ===== LINGUISTICHE =====
+# File di traduzione (se multilingua)
+*.po text eol=lf encoding=utf-8
+*.pot text eol=lf encoding=utf-8
+*.mo binary
+
+# ===== SPECIAL HANDLING =====
+# File che potrebbero causare problemi con Google Drive sync
+*.lock text eol=lf
+*.pid text eol=lf
+
+# File di merge Git (case speciali)
+*.orig binary
+*.rej text eol=lf encoding=utf-8
