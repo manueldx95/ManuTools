@@ -2,7 +2,7 @@ import bpy
 
 
 class MANUTOOLS_PT_lp_hp_matcher(bpy.types.Panel):
-    bl_label = "LP-HP Matcher"
+    bl_label = "Renamer"
     bl_idname = "MANUTOOLS_PT_lp_hp_matcher"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'

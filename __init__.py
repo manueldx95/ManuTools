@@ -1,7 +1,7 @@
 bl_info = {
     "name": "ManuTools",
     "author": "Manuel D'Onofrio",
-    "version": (1, 0, 8),
+    "version": (1, 0, 9),
     "blender": (4, 5, 0),
     "location": "View3D > Sidebar > ManuTools",
     "description": "Collection of tools and functions in one Addon",
