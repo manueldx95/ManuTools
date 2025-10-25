@@ -6,6 +6,7 @@ from .origin_edit import *
 from .renamer_lowpoly import *
 from .swap_names import *
 from .select_faceset import *
+from .attributes_manager import *
 
 def register():
     collapse_checker_register()
@@ -16,8 +17,10 @@ def register():
     renamer_lowpoly_register()
     swap_names_register()   
     select_faceset_register()   
+    attributes_manager_register()   
 
 def unregister():
+    attributes_manager_unregister()
     select_faceset_unregister()
     swap_names_unregister()
     renamer_lowpoly_unregister()
