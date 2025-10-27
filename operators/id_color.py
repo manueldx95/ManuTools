@@ -44,7 +44,7 @@ class ApplyVertexColorOperator(bpy.types.Operator):
         mesh_objects = [obj for obj in selected_objects if obj.type == 'MESH']
         
         if not mesh_objects:
-            self.report({'ERROR'}, "Nessuna mesh selezionata.")
+            self.report({'ERROR'}, "No mesh selected.")
             return {'CANCELLED'}
         
         # Salva l'oggetto attivo corrente
@@ -61,16 +61,16 @@ class ApplyVertexColorOperator(bpy.types.Operator):
         
         # Report di successo
         if len(mesh_objects) == 1:
-            self.report({'INFO'}, f"Colore applicato a {mesh_objects[0].name}")
+            self.report({'INFO'}, f"Color applied to {mesh_objects[0].name}")
         else:
-            self.report({'INFO'}, f"Colore applicato a {len(mesh_objects)} oggetti")
-        
+            self.report({'INFO'}, f"Color applied to {len(mesh_objects)} objects")
+
         return {'FINISHED'}
 
 
 class SetColorPresetOperator(bpy.types.Operator):
     bl_idname = "object.set_color_preset"
-    bl_label = "Imposta Colore"
+    bl_label = "Set Color Preset"
 
     color: bpy.props.FloatVectorProperty(size=4)
 

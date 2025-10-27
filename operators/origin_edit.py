@@ -117,9 +117,9 @@ class SetOrigintoBase(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     pivot_type: bpy.props.EnumProperty(
-        name="Tipo Pivot",
+        name="Pivot Type",
         items=[
-            ('CENTER', "Centro", ""),
+            ('CENTER', "Center", ""),
             ('BOTTOM', "Base", ""),
         ],
         default='BOTTOM'

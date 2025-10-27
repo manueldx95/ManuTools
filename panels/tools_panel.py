@@ -1,7 +1,7 @@
 import bpy
 
 class MANUTOOLS_PT_ToolsPanel(bpy.types.Panel):
-    bl_label = "ModelingTools"
+    bl_label = "Modeling Tools"
     bl_idname = "MANUTOOLS_PT_tools_panel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'

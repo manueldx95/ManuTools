@@ -4,11 +4,8 @@ id = "manutools"
 version = "1.0.0"
 name = "ManuTools"
 tagline = "Collection of tools and functions for 3D modeling workflow"
-maintainer = "Manuel D'Onofrio"
+maintainer = "Manuel D'Onofrio <mdonfrio3d@gmail.com>"
 type = "add-on"
-
-# # Optional: link to documentation, support, source files, etc
-# website = "https://extensions.blender.org/add-ons/my-example-package/"
 
 tags = ["Mesh", "Modeling", "UV", "Object"]
 
@@ -16,43 +13,27 @@ blender_version_min = "4.5.0"
 
 license = ["SPDX:GPL-3.0-or-later"]
 
-
-
-# # Optional: list of supported platforms. If omitted, the extension will be available in all operating systems.
-# platforms = ["windows-x64", "macos-arm64", "linux-x64"]
-# # Other supported platforms: "windows-arm64", "macos-x64"
-
-# # Optional: bundle 3rd party Python modules.
-# # https://docs.blender.org/manual/en/dev/advanced/extensions/python_wheels.html
-# wheels = [
-#   "./wheels/hexdump-3.3-py3-none-any.whl",
-#   "./wheels/jsmin-3.0.1-py3-none-any.whl",
-# ]
-
-# # Optional: add-ons can list which resources they will require:
-# # * files (for access of any filesystem operations)
-# # * network (for internet access)
-# # * clipboard (to read and/or write the system clipboard)
-# # * camera (to capture photos and videos)
-# # * microphone (to capture audio)
-# #
-# # If using network, remember to also check `bpy.app.online_access`
-# # https://docs.blender.org/manual/en/dev/advanced/extensions/addons.html#internet-access
-# #
-# # For each permission it is important to also specify the reason why it is required.
-# # Keep this a single short sentence without a period (.) at the end.
-# # For longer explanations use the documentation or detail page.
-
-
 [permissions]
-files = "Access to manage mesh data and object properties"
+files = "Access mesh data, shape keys, and object properties for editing and management"
+network = false
 
-# # Optional: advanced build settings.
-# # https://docs.blender.org/manual/en/dev/advanced/extensions/command_line_arguments.html#command-line-args-extension-build
+[website]
+documentation = "https://www.artstation.com/manueldonofrio"
+support = "https://www.artstation.com/manueldonofrio"
+repository = ""
 
 [build]
+# Pattern di file da escludere dal pacchetto
 paths_exclude_pattern = [
     "__pycache__/",
-    ".*",
     "*.pyc",
+    ".git/",
+    ".gitignore",
+    ".DS_Store",
+    "*.blend1",
+    "*.blend2",
+    ".vscode/",
+    ".idea/",
+    "test/",
+    "*.md~",
 ]

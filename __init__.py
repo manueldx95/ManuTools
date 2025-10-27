@@ -55,9 +55,9 @@ def register():
             if hasattr(m, 'register'):
                 m.register()
             else:
-                print(f"[MANUTOOLS] Warning: {m.__name__} non ha funzione register()")
+                print(f"[MANUTOOLS] Warning: {m.__name__}  has no register function()")
     except Exception as e:
-        print(f"[MANUTOOLS] Errore durante register: {e}")
+        print(f"[MANUTOOLS] Error during register: {e}")
         __addon_enabled__ = False
         raise
 
@@ -72,12 +72,12 @@ def unregister():
             if hasattr(m, 'unregister'):
                 m.unregister()
             else:
-                print(f"[MANUTOOLS] Warning: {m.__name__} non ha funzione unregister()")
+                print(f"[MANUTOOLS] Warning: {m.__name__} has no unregister function()")
         
         # Poi unregistra le preferenze
         bpy.utils.unregister_class(ManuToolsPreferences)
     except Exception as e:
-        print(f"[MANUTOOLS] Errore durante unregister: {e}")
+        print(f"[MANUTOOLS] Error during unregister: {e}")
         raise
 
 

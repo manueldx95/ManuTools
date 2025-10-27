@@ -11,31 +11,31 @@ class MANUTOOLS_PT_lp_hp_matcher(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-        
-        # Sezione suffissi
+
+        # Suffixes section
         box = layout.box()
-        box.label(text="Aggiungi Suffissi:")
+        box.label(text="Add Suffixes:")
         row = box.row(align=True)
         row.operator("object.add_lp_suffix")
         row.operator("object.add_hp_suffix")
         
         layout.separator()
-        
-        # Sezione batch rename
+
+        # Batch rename section
         box = layout.box()
         box.label(text="Batch Rename:")
         box.operator("object.batch_rename")
         
         layout.separator()
         
-        # Sezione matching
+      # Matching section
         box = layout.box()
         box.label(text="Auto Matching:")
         box.operator("object.auto_match_lp_hp")
         
-        # Info rapida
+        # Quick info
         layout.separator()
         selected = len([obj for obj in context.selected_objects if obj.type == 'MESH'])
         
         if selected > 0:
-            layout.label(text=f"Mesh selezionate: {selected}")
+            layout.label(text=f"Selected Meshes: {selected}")

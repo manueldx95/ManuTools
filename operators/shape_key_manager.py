@@ -72,15 +72,6 @@ class SHAPEKEYS_OT_solo_mode(Operator):
         return {'FINISHED'}
 
 
-class SHAPEKEYS_OT_pin_shape(Operator):
-    """Pin della shape key corrente"""
-    bl_idname = "shapekeys.pin_shape"
-    bl_label = "Pin Shape"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        self.report({'INFO'}, "Pin Shape - Da implementare")
-        return {'FINISHED'}
 
 
 class SHAPEKEYS_OT_clear_shape_key(Operator):
@@ -107,7 +98,7 @@ class SHAPEKEYS_OT_clear_shape_key(Operator):
         # Resetta anche il valore a 0
         active_sk.value = 0.0
         
-        self.report({'INFO'}, f"Shape key '{active_sk.name}' azzerata")
+        self.report({'INFO'}, f"Shape key '{active_sk.name}' cleared")
         return {'FINISHED'}
 
     def invoke(self, context, event):
@@ -239,8 +230,8 @@ class SHAPEKEYS_OT_reset_to_basis(Operator):
         # Reset dei vertici alla posizione Basis
         for i, vert in enumerate(active_sk.data):
             vert.co = basis_sk.data[i].co
-        
-        self.report({'INFO'}, f"Shape key '{active_sk.name}' resettata alla Basis")
+
+        self.report({'INFO'}, f"Shape key '{active_sk.name}' reset to Basis")
         return {'FINISHED'}
 
 
@@ -335,8 +326,8 @@ class SHAPEKEYS_OT_copy_shape_key(Operator):
         new_sk.slider_max = active_sk.slider_max
         new_sk.vertex_group = active_sk.vertex_group
         new_sk.relative_key = active_sk.relative_key
-        
-        self.report({'INFO'}, f"Shape key '{active_sk.name}' duplicata")
+
+        self.report({'INFO'}, f"Shape key '{active_sk.name}' duplicated")
         return {'FINISHED'}
 
 
@@ -357,14 +348,14 @@ class SHAPEKEYS_OT_join_as_shapes(Operator):
         selected = [o for o in context.selected_objects if o != obj and o.type == 'MESH']
         
         if not selected:
-            self.report({'ERROR'}, "Seleziona almeno due mesh")
+            self.report({'ERROR'}, "Select at least two meshes")
             return {'CANCELLED'}
         
         # Verifica che tutti gli oggetti abbiano lo stesso numero di vertici
         base_verts = len(obj.data.vertices)
         for target in selected:
             if len(target.data.vertices) != base_verts:
-                self.report({'ERROR'}, f"'{target.name}' ha un numero diverso di vertici")
+                self.report({'ERROR'}, f"'{target.name}' has a different number of vertices")
                 return {'CANCELLED'}
         
         # Crea le shape keys se non esistono
@@ -379,13 +370,13 @@ class SHAPEKEYS_OT_join_as_shapes(Operator):
             # Copia le posizioni dei vertici dall'oggetto target
             for i, vert in enumerate(target.data.vertices):
                 new_sk.data[i].co = vert.co
-        
-        self.report({'INFO'}, f"{len(selected)} oggetti aggiunti come shape keys")
+
+        self.report({'INFO'}, f"{len(selected)} objects added as shape keys")
         return {'FINISHED'}
 
 
 class SHAPEKEYS_OT_transfer_shape_keys(Operator):
-    """Trasferisce tutte le shape keys all'oggetto selezionato usando Data Transfer"""
+    """Transfers all shape keys to the selected object using Data Transfer"""
     bl_idname = "shapekeys.transfer_shape_keys"
     bl_label = "Transfer Shape Keys"
     bl_options = {'REGISTER', 'UNDO'}
@@ -402,7 +393,7 @@ class SHAPEKEYS_OT_transfer_shape_keys(Operator):
         target = [obj for obj in context.selected_objects if obj != source][0]
         
         if target.type != 'MESH':
-            self.report({'ERROR'}, "L'oggetto target deve essere una mesh")
+            self.report({'ERROR'}, "The target object must be a mesh")
             return {'CANCELLED'}
         
         # Usa il Data Transfer modifier per trasferire le shape keys
@@ -425,15 +416,15 @@ class SHAPEKEYS_OT_transfer_shape_keys(Operator):
             
             # Usa il Surface Deform per trasferire la deformazione
             # Questo è un approccio semplificato - per risultati migliori si userebbe Data Transfer
-            self.report({'INFO'}, "Transfer Shape Keys - Usa 'Copy Shape Keys to Selected' dal menu specials (V) per un trasferimento più accurato")
+            self.report({'INFO'}, "Transfer Shape Keys - Use 'Copy Shape Keys to Selected' from the specials menu (V) for a more accurate transfer")
             return {'FINISHED'}
-        
-        self.report({'INFO'}, f"Shape keys trasferite da '{source.name}' a '{target.name}'")
+
+        self.report({'INFO'}, f"Shape keys transferred from '{source.name}' to '{target.name}'")
         return {'FINISHED'}
 
 
 class SHAPEKEYS_OT_delete_all_shape_keys(Operator):
-    """Elimina tutte le shape keys senza applicarle"""
+    """Deletes all shape keys without applying them"""
     bl_idname = "shapekeys.delete_all_shape_keys"
     bl_label = "Delete All Shape Keys"
     bl_options = {'REGISTER', 'UNDO'}
@@ -455,7 +446,7 @@ class SHAPEKEYS_OT_delete_all_shape_keys(Operator):
             obj.active_shape_key_index = 0
             bpy.ops.object.shape_key_remove(all=True)
         
-        self.report({'INFO'}, "Tutte le shape keys eliminate")
+        self.report({'INFO'}, "All deleted shape keys")
         return {'FINISHED'}
 
     def invoke(self, context, event):
@@ -482,8 +473,8 @@ class SHAPEKEYS_OT_apply_all_shape_keys(Operator):
         
         # Applica tutte le shape keys con il loro valore corrente
         bpy.ops.object.shape_key_remove(all=True, apply_mix=True)
-        
-        self.report({'INFO'}, "Tutte le shape keys applicate alla mesh")
+
+        self.report({'INFO'}, "All shape keys applied to the mesh")
         return {'FINISHED'}
 
     def invoke(self, context, event):

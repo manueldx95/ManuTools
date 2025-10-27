@@ -110,18 +110,18 @@ def auto_match_lp_hp():
             if hp_match.name != expected_hp_name:
                 old_name = hp_match.name
                 hp_match.name = expected_hp_name
-                print(f"Rinominato: {old_name} -> {hp_match.name}")
+                print(f"Renamed: {old_name} -> {hp_match.name}")
         else:
             unmatched_lp.append(lp_obj)
     
     # Report risultati
     print(f"\n=== MATCHING LP-HP ===")
-    print(f"Match trovati: {len(matches)}")
+    print(f"Matches founds: {len(matches)}")
     for lp, hp in matches:
         print(f"  {lp.name} <-> {hp.name}")
     
     if unmatched_lp:
-        print(f"\nLP senza match: {len(unmatched_lp)}")
+        print(f"\nLP unmatched: {len(unmatched_lp)}")
         for lp in unmatched_lp:
             print(f"  {lp.name}")
     
@@ -134,13 +134,13 @@ def auto_match_lp_hp():
 class OBJECT_OT_auto_match_lp_hp(bpy.types.Operator):
     bl_idname = "object.auto_match_lp_hp"
     bl_label = "Auto Match LP-HP"
-    bl_description = "Trova automaticamente corrispondenze tra Low Poly e High Poly selezionati"
+    bl_description = "Automatically find matches between selected Low Poly and High Poly models"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
         matches, unmatched = auto_match_lp_hp()
         
-        message = f"Match: {len(matches)}, Non matchati: {len(unmatched)}"
+        message = f"Matches found: {len(matches)}, Unmatched LP: {len(unmatched)}"
         self.report({'INFO'}, message)
         
         return {'FINISHED'}
@@ -148,40 +148,40 @@ class OBJECT_OT_auto_match_lp_hp(bpy.types.Operator):
 class OBJECT_OT_add_lp_suffix(bpy.types.Operator):
     bl_idname = "object.add_lp_suffix"
     bl_label = "Add _lp"
-    bl_description = "Aggiunge il suffisso _lp agli oggetti selezionati"
+    bl_description = "Add the _lp suffix to selected objects"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
         selected_objects = bpy.context.selected_objects
         
         if not selected_objects:
-            self.report({'WARNING'}, "Nessun oggetto selezionato")
+            self.report({'WARNING'}, "No objects selected")
             return {'CANCELLED'}
         
         renamed_count = 0
         for obj in selected_objects:
-            # Rimuove suffissi esistenti per evitare duplicati
+            # Remove existing suffixes to avoid duplicates
             clean_name = re.sub(r'_[lh]p$', '', obj.name, flags=re.IGNORECASE)
             new_name = clean_name + "_lp"
             
             if obj.name != new_name:
                 obj.name = new_name
                 renamed_count += 1
-        
-        self.report({'INFO'}, f"Rinominati {renamed_count} oggetti con _lp")
+
+        self.report({'INFO'}, f"Renamed {renamed_count} objects with _lp")
         return {'FINISHED'}
 
 class OBJECT_OT_add_hp_suffix(bpy.types.Operator):
     bl_idname = "object.add_hp_suffix"
     bl_label = "Add _hp"
-    bl_description = "Aggiunge il suffisso _hp agli oggetti selezionati"
+    bl_description = "Adds the suffix _hp to the selected objects"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
         selected_objects = bpy.context.selected_objects
         
         if not selected_objects:
-            self.report({'WARNING'}, "Nessun oggetto selezionato")
+            self.report({'WARNING'}, "No objects selected")
             return {'CANCELLED'}
         
         renamed_count = 0
@@ -193,19 +193,19 @@ class OBJECT_OT_add_hp_suffix(bpy.types.Operator):
             if obj.name != new_name:
                 obj.name = new_name
                 renamed_count += 1
-        
-        self.report({'INFO'}, f"Rinominati {renamed_count} oggetti con _hp")
+
+        self.report({'INFO'}, f"Renamed {renamed_count} objects with _hp")
         return {'FINISHED'}
 
 class OBJECT_OT_batch_rename(bpy.types.Operator):
     bl_idname = "object.batch_rename"
     bl_label = "Batch Rename"
-    bl_description = "Rinomina gli oggetti selezionati con numerazione progressiva"
+    bl_description = "Rename selected objects with progressive numbering"
     bl_options = {'REGISTER', 'UNDO'}
     
     new_name: bpy.props.StringProperty(
-        name="Nuovo Nome",
-        description="Nome base per gli oggetti",
+        name="New Name",
+        description="Base name for the objects",
         default="Object"
     )
     
@@ -213,11 +213,11 @@ class OBJECT_OT_batch_rename(bpy.types.Operator):
         selected_objects = bpy.context.selected_objects
         
         if not selected_objects:
-            self.report({'WARNING'}, "Nessun oggetto selezionato")
+            self.report({'WARNING'}, "No objects selected")
             return {'CANCELLED'}
         
         if not self.new_name.strip():
-            self.report({'WARNING'}, "Inserisci un nome valido")
+            self.report({'WARNING'}, "Enter a valid name")
             return {'CANCELLED'}
         
         base_name = self.new_name.strip()
@@ -228,8 +228,8 @@ class OBJECT_OT_batch_rename(bpy.types.Operator):
             new_name = f"{base_name}_{i:02d}"
             obj.name = new_name
             renamed_count += 1
-        
-        self.report({'INFO'}, f"Rinominati {renamed_count} oggetti con '{base_name}_XX'")
+
+        self.report({'INFO'}, f"Renamed {renamed_count} objects with '{base_name}_XX'")
         return {'FINISHED'}
     
     def invoke(self, context, event):
