@@ -1,15 +1,14 @@
 bl_info = {
     "name": "ManuTools",
     "author": "Manuel D'Onofrio",
-    "version": (1, 1, 0),
+    "version": (1, 0, 0),
     "blender": (4, 5, 0),
     "location": "View3D > Sidebar > ManuTools",
-    "description": "Collection of tools and functions in one Addon",
+    "description": "Collection of tools and functions for 3D modeling workflow"",
     "doc_url": "https://www.artstation.com/manueldonofrio",
-    "category": "Mesh",
+    "category": "Mesh", "Modeling", "UV", "Object",
 }
 
-import sys
 import importlib
 import bpy
 from bpy.types import AddonPreferences
