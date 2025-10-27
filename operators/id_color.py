@@ -30,6 +30,7 @@ def set_vertex_colors(obj, color):
 
 
 class ApplyVertexColorOperator(bpy.types.Operator):
+    """Apply selected color to active or selected mesh objects"""
     bl_idname = "object.apply_vertex_color"
     bl_label = "Apply ID Color"
 
@@ -69,6 +70,7 @@ class ApplyVertexColorOperator(bpy.types.Operator):
 
 
 class SetColorPresetOperator(bpy.types.Operator):
+    """Set the vertex color from a predefined color preset"""
     bl_idname = "object.set_color_preset"
     bl_label = "Set Color Preset"
 
@@ -80,6 +82,7 @@ class SetColorPresetOperator(bpy.types.Operator):
 
 
 class RandomizeColorOperator(bpy.types.Operator):
+    """Randomize the vertex color"""
     bl_idname = "object.randomize_vertex_color"
     bl_label = "Shuffle"
 
@@ -91,6 +94,7 @@ class RandomizeColorOperator(bpy.types.Operator):
 
 
 class ToggleViewportColorVertexOperator(bpy.types.Operator):
+    """Toggle viewport display to Vertex Color"""
     bl_idname = "view3d.toggle_viewport_color_vertex"
     bl_label = "Vertex Color"
     bl_options = {'REGISTER', 'UNDO'}
@@ -118,8 +122,9 @@ class ToggleViewportColorVertexOperator(bpy.types.Operator):
 
 
 class VertexColorProperties(bpy.types.PropertyGroup):
+    """Store properties for vertex color tools"""
     color: bpy.props.FloatVectorProperty(
-        name="Colore",
+        name="Color",
         subtype='COLOR',
         min=0.0,
         max=1.0,

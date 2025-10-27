@@ -3,6 +3,7 @@ import bmesh
 from bpy.props import IntProperty, BoolProperty
 
 class DissolveCheckerRing(bpy.types.Operator):
+    """Dissolve selected edge ring in a checker pattern"""
     bl_idname = "manutools.checker_dissolve_ring"
     bl_label = "Dissolve Ring"
     bl_options = {'REGISTER', 'UNDO'}

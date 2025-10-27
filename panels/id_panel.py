@@ -1,5 +1,4 @@
 import bpy
-import random
 
 # Preset di colori (nome, colore RGBA)
 COLOR_PRESETS = [

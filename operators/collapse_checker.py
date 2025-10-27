@@ -3,6 +3,7 @@ import bmesh
 from bpy.props import IntProperty
 
 class CollapseCheckerLoop(bpy.types.Operator):
+    """Collapse selected edge loop in a checker pattern"""
     bl_idname = "manutools.checker_collapse_loop"
     bl_label = "Collapse Loop"
     bl_options = {'REGISTER', 'UNDO'}
