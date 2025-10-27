@@ -4,9 +4,9 @@ bl_info = {
     "version": (1, 0, 0),
     "blender": (4, 5, 0),
     "location": "View3D > Sidebar > ManuTools",
-    "description": "Collection of tools and functions for 3D modeling workflow"",
+    "description": "Collection of tools and functions for 3D modeling workflow",
     "doc_url": "https://www.artstation.com/manueldonofrio",
-    "category": "Mesh", "Modeling", "UV", "Object",
+    "category": "Mesh",
 }
 
 import importlib
