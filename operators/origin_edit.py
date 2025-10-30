@@ -117,9 +117,9 @@ class SetOrigintoBase(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     pivot_type: bpy.props.EnumProperty(
-        name="Tipo Pivot",
+        name="Pivot Type",
         items=[
-            ('CENTER', "Centro", ""),
+            ('CENTER', "Center", ""),
             ('BOTTOM', "Base", ""),
         ],
         default='BOTTOM'
@@ -187,7 +187,15 @@ class SetOrigintoBase(bpy.types.Operator):
 
         return {'FINISHED'}
 
-
+    def invoke(self, context, event):
+        # AGGIUNGI QUESTO ✨
+        try:
+            prefs = context.preferences.addons['ManuTools'].preferences
+            self.pivot_type = prefs.snap_to_grid_mode
+        except:
+            pass
+        
+        return self.execute(context) 
 
 
 

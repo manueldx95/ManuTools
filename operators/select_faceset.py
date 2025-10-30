@@ -121,42 +121,68 @@ addon_keymaps = []
 
 def select_faceset_register():
     bpy.utils.register_class(MESH_OT_select_linked_face_set)
-    
-    # Add to Select Linked menu
     bpy.types.VIEW3D_MT_edit_mesh_select_linked.append(menu_func)
     
-    # Add keybindings
+    # Controlla se shortcuts sono abilitate
+    try:
+        addon_name = __name__.split('.')[0]
+        prefs = bpy.context.preferences.addons[addon_name].preferences
+        if not prefs.enable_faceset_shortcuts:
+            return  # Non registrare shortcuts se disabilitati
+    except:
+        pass  # Se preferences non disponibili, continua comunque
+    
+    # Add keybindings con valori custom
     wm = bpy.context.window_manager
     kc = wm.keyconfigs.addon
     if kc:
         km = kc.keymaps.new(name='Mesh', space_type='EMPTY')
         
-        # Ctrl + K : Select
+        # Ottieni i valori dalle preferences
+        try:
+            key = prefs.faceset_select_key
+            select_mod = prefs.faceset_select_modifier
+            add_mod = prefs.faceset_add_modifier
+            subtract_mod = prefs.faceset_subtract_modifier
+        except:
+            # Fallback ai valori di default se preferences non disponibili
+            key = 'K'
+            select_mod = 'CTRL'
+            add_mod = 'SHIFT'
+            subtract_mod = 'ALT'
+        
+        # Select shortcut
         kmi = km.keymap_items.new(
             MESH_OT_select_linked_face_set.bl_idname,
-            type='K',
+            type=key,
             value='PRESS',
-            ctrl=True
+            ctrl=(select_mod == 'CTRL'),
+            shift=(select_mod == 'SHIFT'),
+            alt=(select_mod == 'ALT')
         )
         kmi.properties.mode = 'SELECT'
         addon_keymaps.append((km, kmi))
         
-        # Shift + K : Add to selection
+        # Add to selection shortcut
         kmi = km.keymap_items.new(
             MESH_OT_select_linked_face_set.bl_idname,
-            type='K',
+            type=key,
             value='PRESS',
-            shift=True
+            ctrl=(add_mod == 'CTRL'),
+            shift=(add_mod == 'SHIFT'),
+            alt=(add_mod == 'ALT')
         )
         kmi.properties.mode = 'ADD'
         addon_keymaps.append((km, kmi))
         
-        # Alt + K : Subtract from selection
+        # Subtract from selection shortcut
         kmi = km.keymap_items.new(
             MESH_OT_select_linked_face_set.bl_idname,
-            type='K',
+            type=key,
             value='PRESS',
-            alt=True
+            ctrl=(subtract_mod == 'CTRL'),
+            shift=(subtract_mod == 'SHIFT'),
+            alt=(subtract_mod == 'ALT')
         )
         kmi.properties.mode = 'SUBTRACT'
         addon_keymaps.append((km, kmi))

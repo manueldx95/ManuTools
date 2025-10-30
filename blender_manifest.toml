@@ -1,0 +1,39 @@
+schema_version = "1.0.0"
+
+id = "manutools"
+version = "1.0.0"
+name = "ManuTools"
+tagline = "Collection of tools and functions for 3D modeling workflow"
+maintainer = "Manuel D'Onofrio <mdonfrio3d@gmail.com>"
+type = "add-on"
+
+tags = ["Mesh", "Modeling", "UV", "Object"]
+
+blender_version_min = "4.5.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+[permissions]
+files = "Access mesh data, shape keys, and object properties for editing and management"
+network = false
+
+[website]
+documentation = "https://www.artstation.com/manueldonofrio"
+support = "https://www.artstation.com/manueldonofrio"
+repository = ""
+
+[build]
+# Pattern di file da escludere dal pacchetto
+paths_exclude_pattern = [
+    "__pycache__/",
+    "*.pyc",
+    ".git/",
+    ".gitignore",
+    ".DS_Store",
+    "*.blend1",
+    "*.blend2",
+    ".vscode/",
+    ".idea/",
+    "test/",
+    "*.md~",
+]

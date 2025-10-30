@@ -73,9 +73,10 @@ class AttributesPanelProperties(PropertyGroup):
         description="Weight value for attribute"
     )
     
+    # MODIFICA QUESTA PROPERTY per usare il valore dalle preferences
     show_system_attributes: BoolProperty(
         name="Show System Attributes",
-        default=False,
+        default=False,  # Questo sarà sovrascritto
         description="Show system attributes (UVMap, position, etc.)"
     )
 
@@ -112,8 +113,15 @@ class MESH_OT_attribute_add(Operator):
         ],
         default='BOOLEAN'
     )
-    
+ 
     def invoke(self, context, event):
+        # AGGIUNGI QUESTO ✨
+        try:
+            prefs = context.preferences.addons['ManuTools'].preferences
+            self.domain = prefs.default_attribute_domain
+        except:
+            pass
+        
         return context.window_manager.invoke_props_dialog(self)
     
     def execute(self, context):
