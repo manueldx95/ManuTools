@@ -187,7 +187,15 @@ class SetOrigintoBase(bpy.types.Operator):
 
         return {'FINISHED'}
 
-
+    def invoke(self, context, event):
+        # AGGIUNGI QUESTO ✨
+        try:
+            prefs = context.preferences.addons['ManuTools'].preferences
+            self.pivot_type = prefs.snap_to_grid_mode
+        except:
+            pass
+        
+        return self.execute(context) 
 
 
 
