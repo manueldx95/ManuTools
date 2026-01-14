@@ -9,3 +9,5 @@ mklink /D "C:\Users\manue\AppData\Roaming\Blender Foundation\Blender\4.5\scripts
 
 ATTENZIONE, mettere sul finale del percorso di bledner il nome della cartella tutto in minuscolo e attacccato come piace a blender.
 Il prompt copierà quello che è presente nella cartella repository dentro la nuova cartella che ho segnalato nel percorso in blender.
+
+Compress-Archive -Path .\ManuTools\* -DestinationPath .\manutools-1.0.0.zip -Force

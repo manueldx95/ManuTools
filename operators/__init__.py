@@ -7,6 +7,7 @@ from .renamer_lowpoly import *
 from .swap_names import *
 from .select_faceset import *
 from .attributes_manager import *
+from .bevel_modifier import *
 
 def register():
     collapse_checker_register()
@@ -15,11 +16,13 @@ def register():
     shape_key_manager_register()
     origin_edit_register()
     renamer_lowpoly_register()
-    swap_names_register()   
-    select_faceset_register()   
-    attributes_manager_register()   
+    swap_names_register()
+    select_faceset_register()
+    attributes_manager_register()
+    bevel_modifier_register()
 
 def unregister():
+    bevel_modifier_unregister()
     attributes_manager_unregister()
     select_faceset_unregister()
     swap_names_unregister()

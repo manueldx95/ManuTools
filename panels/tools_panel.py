@@ -30,15 +30,22 @@ class MANUTOOLS_PT_ToolsPanel(bpy.types.Panel):
 
 
 
+        # Sezione Modifiers (sempre visibile per mesh)
+        box = layout.box()
+        row = box.row()
+        row.label(text="Modifiers", icon="MODIFIER")
+
+        col = box.column(align=True)
+        col.operator("manutools.add_bevel_modifier", icon='MOD_BEVEL')
+
         # Mostra solo in modalità Edit
         if context.mode == 'EDIT_MESH':
-         
+
             box = layout.box()
             row = box.row()
             row.label(text="Collapse Tools", icon="KEYTYPE_JITTER_VEC")
-            
+
             col = box.column(align=True)
             col.operator("manutools.checker_collapse_loop", icon='EDGESEL')
             col.operator("manutools.checker_dissolve_ring", icon='SNAP_EDGE')
 
-            

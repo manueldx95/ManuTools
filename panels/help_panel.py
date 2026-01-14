@@ -106,7 +106,7 @@ class MANUTOOLS_PT_help(bpy.types.Panel):
         op = row.operator("manutools.open_url", 
                          text="Documentation", 
                          icon='HELP')
-        op.url = "https://extensions.blender.org/add-ons/manutools/"
+        op.url = "https://github.com/manueldx95/ManuTools"
         
         # Support
         row = col.row()
